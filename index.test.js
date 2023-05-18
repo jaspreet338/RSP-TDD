@@ -1,7 +1,9 @@
 function rps(left, right) {
-    return left === "rock" || right === "paper"
-    ? "left"
-    : "right";
+    return left === "rock" ||
+      right === "paper" ||
+      (left === "paper" && right === "rock")
+      ? "left"
+      : "right";
 }
 describe("rock, paper, scissors", () => {
   it("should say right wins for rock vs. scissors", () => {
@@ -38,5 +40,14 @@ describe("rock, paper, scissors", () => {
     const result = rps(left, right);
 
     expect(result).toBe("right");
+  });
+
+  it("should say left wins for paper vs. rock", () => {
+    const left = "paper";
+    const right = "rock";
+
+    const result = rps(left, right);
+
+    expect(result).toBe("left");
   });
 });
